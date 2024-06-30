@@ -5,6 +5,7 @@
 
 # User-specific files
 *acc.txt
+*usr.txt
 *bin
 *include
 *lib
