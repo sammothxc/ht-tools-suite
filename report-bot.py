@@ -31,18 +31,18 @@ a = open(acc_file, "r").readlines()
 a_file = [s.rstrip()for s in a]
 a_file.reverse()
 
-for username in u_file:
-    user = []
-    passw = []
-    for lines in a_file:
-        a_file = lines.split(":")
+user = []
+passw = []
+for lines in a_file:
+    a_file = lines.split(":")
 
-        un = a_file[0]
-        pw = a_file[1]
-        user.append(un)
-        passw.append(pw)
+    un = a_file[0]
+    pw = a_file[1]
+    user.append(un)
+    passw.append(pw)
 
-    for line in range(len(a_file)+1):
+for line in range(len(a_file)+1):
+    for username in u_file:
         web = webdriver.Firefox()
         web.implicitly_wait(10)
         web.get("https://www.instagram.com/accounts/login/")
