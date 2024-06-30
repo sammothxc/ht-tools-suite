@@ -1,4 +1,4 @@
-username1
-username2
-username3
+https://www.instagram.com/username1
+https://www.instagram.com/username2
+https://www.instagram.com/username3
 etc...

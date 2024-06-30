@@ -17,9 +17,9 @@ TODO
 ```
 
 ## Files
-Create `acc.txt` and fill it with burner accounts and their respective passwords following the style in `acc-example.txt`
+Create `acc.txt` and fill it with burner accounts and their respective passwords following the format in `acc-example.txt`
 
-Create `usr.txt` and fill it with accounts you want to report following the style in `usr-example.txt`
+Create `usr.txt` and fill it with the direct link to accounts you want to report following the format in `usr-example.txt`
 
 ## Usage
 Run`bin/python3 report-bot.py`
