@@ -44,11 +44,9 @@ for username in u_file:
 
     for line in range(len(a_file)+1):
         web = webdriver.Chrome()
-
+        web.implicitly_wait(10)
         web.get("https://www.instagram.com/accounts/login/")
         assert "Instagram" in web.title
-
-        time.sleep(1.5)
 
         elem_user = web.find_element(By.NAME, "username")
         elem_user.send_keys(user[line])
@@ -59,11 +57,9 @@ for username in u_file:
         time.sleep(0.7)
         elem_pass.send_keys(Keys.ENTER)
 
-        time.sleep(3)
+        time.sleep(4)
 
         web.get(username)
-
-        time.sleep(3)
 
         options = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/header/section[2]/div/div/div[3]/div')
         
@@ -71,15 +67,11 @@ for username in u_file:
             .click(options)\
             .perform()
         
-        time.sleep(2)
-
         report = web.find_element(By.XPATH, '/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div/button[3]')
         
         ActionChains(web)\
             .click(report)\
             .perform()
-
-        time.sleep(2)
 
         report2 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[3]/button[2]/div')
         
@@ -87,15 +79,11 @@ for username in u_file:
             .click(report2)\
             .perform()
 
-        time.sleep(3)
-
         report3 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[1]')
         
         ActionChains(web)\
             .click(report3)\
             .perform()
-
-        time.sleep(3)
 
         report4 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[5]')
         
@@ -103,15 +91,11 @@ for username in u_file:
             .click(report4)\
             .perform()
 
-        time.sleep(3)
-
         report5 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/fieldset/div[4]/div')
         
         ActionChains(web)\
             .click(report5)\
             .perform()
-
-        time.sleep(3)
 
         report6 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
         
@@ -119,7 +103,7 @@ for username in u_file:
             .click(report6)\
             .perform()
 
-        time.sleep(4)
+        time.sleep(5)
 
         pyautogui.keyDown('ctrl')
         time.sleep(0.25)
