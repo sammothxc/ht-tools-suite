@@ -63,7 +63,7 @@ for username in u_file:
 
         web.get(username)
 
-        time.sleep(2.5)
+        time.sleep(3)
 
         options = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/header/section[2]/div/div/div[3]/div')
         
@@ -87,47 +87,39 @@ for username in u_file:
             .click(report2)\
             .perform()
 
-        time.sleep(2)
+        time.sleep(3)
 
-        report3 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[3]/button[2]/div')
+        report3 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[1]')
         
         ActionChains(web)\
             .click(report3)\
             .perform()
 
-        time.sleep(2)
+        time.sleep(3)
 
-        report4 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[1]/div')
+        report4 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[5]')
         
         ActionChains(web)\
             .click(report4)\
             .perform()
 
-        time.sleep(2)
+        time.sleep(3)
 
-        report5 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[5]/div')
+        report5 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/fieldset/div[4]/div')
         
         ActionChains(web)\
             .click(report5)\
             .perform()
 
-        time.sleep(2)
+        time.sleep(3)
 
-        report6 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/fieldset/div[4]/div/div/input')
+        report6 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
         
         ActionChains(web)\
             .click(report6)\
             .perform()
 
-        time.sleep(2)
-
-        report7 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
-        
-        ActionChains(web)\
-            .click(report7)\
-            .perform()
-
-        time.sleep(0.5)
+        time.sleep(4)
 
         pyautogui.keyDown('ctrl')
         time.sleep(0.25)
