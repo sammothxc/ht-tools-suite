@@ -24,12 +24,20 @@ args = getOptions()
 usr_file = args.usernames
 acc_file = args.accounts
 
-u = open(usr_file, "r").readlines()
-u_file = [s.rstrip()for s in u]
+try:
+    u = open(usr_file, "r").readlines()
+    u_file = [s.rstrip()for s in u]
+except FileNotFoundError:
+    print("ERROR: no usr.txt file found")
+    exit(2)
 
-a = open(acc_file, "r").readlines()
-a_file = [s.rstrip()for s in a]
-a_file.reverse()
+try:
+    a = open(acc_file, "r").readlines()
+    a_file = [s.rstrip()for s in a]
+    a_file.reverse()
+except FileNotFoundError:
+    print("ERROR: no acc.txt file found")
+    exit(2)
 
 user = []
 passw = []
@@ -40,15 +48,22 @@ web.implicitly_wait(10)
 for lines in a_file:
     a_file = lines.split(":")
 
-    un = a_file[0]
-    pw = a_file[1]
+    try:
+        un = a_file[0]
+        pw = a_file[1]
+    except IndexError:
+        print("ERROR: Wrong syntax in acc.txt")
     user.append(un)
     passw.append(pw)
 
 for line in range(len(a_file)+1):
-    web.get("https://www.instagram.com/accounts/login/")
-    assert "Instagram" in web.title
-
+    try:
+        web.get("https://www.instagram.com/accounts/login/")
+        assert "Instagram" in web.title
+    except:
+        print("ERROR: Failed to open the web browser.")
+        break
+    
     elem_user = web.find_element(By.NAME, "username")
     elem_user.send_keys(user[line])
     time.sleep(0.7)
@@ -114,4 +129,3 @@ for line in range(len(a_file)+1):
         time.sleep(0.5)
         pyautogui.keyUp('ctrl')
         pyautogui.keyUp('https://replit.com/@Cw')
-    
