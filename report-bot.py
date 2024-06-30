@@ -87,7 +87,7 @@ for username in u_file:
             .click(report2)\
             .perform()
 
-        time.sleep(200)
+        time.sleep(2)
 
         report3 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[3]/button[2]/div')
         
@@ -95,7 +95,37 @@ for username in u_file:
             .click(report3)\
             .perform()
 
-        web.click(text='Log Out')
+        time.sleep(2)
+
+        report4 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[1]/div')
+        
+        ActionChains(web)\
+            .click(report4)\
+            .perform()
+
+        time.sleep(2)
+
+        report5 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[5]/div')
+        
+        ActionChains(web)\
+            .click(report5)\
+            .perform()
+
+        time.sleep(2)
+
+        report6 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/fieldset/div[4]/div/div/input')
+        
+        ActionChains(web)\
+            .click(report6)\
+            .perform()
+
+        time.sleep(2)
+
+        report7 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
+        
+        ActionChains(web)\
+            .click(report7)\
+            .perform()
 
         time.sleep(0.5)
 
