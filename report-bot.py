@@ -59,7 +59,7 @@ for username in u_file:
         time.sleep(0.7)
         elem_pass.send_keys(Keys.ENTER)
 
-        time.sleep(2.5)
+        time.sleep(3)
 
         web.get(username)
 
