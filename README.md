@@ -13,7 +13,11 @@ bin/pip3 install webbot
 
 Windows: 
 ```
-TODO
+py -m venv ~/autoreport
+
+py -m pip install pyautogui
+
+py -m pip install webbot
 ```
 
 ## Files
