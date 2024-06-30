@@ -79,15 +79,11 @@ for username in u_file:
             .click(report2)\
             .perform()
 
-        time.sleep(2)
-
         report3 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[1]/div')
 
         ActionChains(web)\
             .click(report3)\
             .perform()
-
-        time.sleep(2)
 
         report4 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[5]/div/div[1]')
         
@@ -95,23 +91,17 @@ for username in u_file:
             .click(report4)\
             .perform()
         
-        time.sleep(2)
-
         report5 = web.find_element(By.XPATH, '//*[@id="IGDSRadioButtontag-3"]')
         
         ActionChains(web)\
             .click(report5)\
             .perform()
         
-        time.sleep(2)
-
         report6 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
         
         ActionChains(web)\
             .click(report6)\
             .perform()
-
-        time.sleep(5)
 
         pyautogui.keyDown('ctrl')
         time.sleep(0.25)
