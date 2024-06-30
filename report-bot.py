@@ -61,7 +61,7 @@ for username in u_file:
 
         time.sleep(2.5)
 
-        web.get("https://www.instagram.com/%s/" % username) # TO-DO: use links directly
+        web.get(username)
 
         time.sleep(2.5)
 
