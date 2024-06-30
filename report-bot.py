@@ -43,7 +43,7 @@ for username in u_file:
         passw.append(pw)
 
     for line in range(len(a_file)+1):
-        web = webdriver.Chrome()
+        web = webdriver.Firefox()
         web.implicitly_wait(10)
         web.get("https://www.instagram.com/accounts/login/")
         assert "Instagram" in web.title
@@ -79,25 +79,33 @@ for username in u_file:
             .click(report2)\
             .perform()
 
-        report3 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[1]')
-        
+        time.sleep(2)
+
+        report3 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[1]/div')
+
         ActionChains(web)\
             .click(report3)\
             .perform()
 
-        report4 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[5]')
+        time.sleep(2)
+
+        report4 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[5]/div/div[1]')
         
         ActionChains(web)\
             .click(report4)\
             .perform()
+        
+        time.sleep(2)
 
-        report5 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/fieldset/div[4]/div')
+        report5 = web.find_element(By.XPATH, '//*[@id="IGDSRadioButtontag-3"]')
         
         ActionChains(web)\
             .click(report5)\
             .perform()
+        
+        time.sleep(2)
 
-        report6 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
+        report6 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
         
         ActionChains(web)\
             .click(report6)\
