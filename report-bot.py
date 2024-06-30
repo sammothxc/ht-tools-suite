@@ -33,6 +33,10 @@ a_file.reverse()
 
 user = []
 passw = []
+
+web = webdriver.Firefox()
+web.implicitly_wait(10)
+
 for lines in a_file:
     a_file = lines.split(":")
 
@@ -42,22 +46,23 @@ for lines in a_file:
     passw.append(pw)
 
 for line in range(len(a_file)+1):
+    web.get("https://www.instagram.com/accounts/login/")
+    assert "Instagram" in web.title
+
+    elem_user = web.find_element(By.NAME, "username")
+    elem_user.send_keys(user[line])
+    time.sleep(0.7)
+    elem_pass = web.find_element(By.NAME, "password")
+    time.sleep(0.7)
+    elem_pass.send_keys(passw[line])
+    time.sleep(0.7)
+    elem_pass.send_keys(Keys.ENTER)
+
+    time.sleep(4)
+    
     for username in u_file:
-        web = webdriver.Firefox()
+        
         web.implicitly_wait(10)
-        web.get("https://www.instagram.com/accounts/login/")
-        assert "Instagram" in web.title
-
-        elem_user = web.find_element(By.NAME, "username")
-        elem_user.send_keys(user[line])
-        time.sleep(0.7)
-        elem_pass = web.find_element(By.NAME, "password")
-        time.sleep(0.7)
-        elem_pass.send_keys(passw[line])
-        time.sleep(0.7)
-        elem_pass.send_keys(Keys.ENTER)
-
-        time.sleep(4)
 
         web.get(username)
 
