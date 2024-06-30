@@ -26,7 +26,6 @@ acc_file = args.accounts
 
 u = open(usr_file, "r").readlines()
 u_file = [s.rstrip()for s in u]
-u_file.reverse()
 
 a = open(acc_file, "r").readlines()
 a_file = [s.rstrip()for s in a]
