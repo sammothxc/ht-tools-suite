@@ -15,7 +15,7 @@ def getOptions(args=sys.argv[1:]):
     return options
 
 def reportPost(web):
-    optionDots = web.find_element(By.XPATH, '/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/div/div/div/div/div/svg')
+    optionDots = web.find_element(By.XPATH, '/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/div/div/div/div')
     clickElement(optionDots, web)
     reportOption = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div/button[1]')
     clickElement(reportOption, web)
@@ -58,7 +58,6 @@ def main():
     try:
         u = open(usr_file, "r").readlines()
         u_file = [s.rstrip()for s in u]
-        u_file.reverse()
     except FileNotFoundError:
         print("ERROR: no usr.txt file found")
         exit(2)
@@ -93,7 +92,7 @@ def main():
         time.sleep(0.25)
         print("Entering password...")
         elem_pass = web.find_element(By.NAME, "password")
-        elem_pass.send_keys(user[line])
+        elem_pass.send_keys(passw[line])
         time.sleep(0.25)
         print("Logging in...")
         elem_pass.send_keys(Keys.ENTER)
