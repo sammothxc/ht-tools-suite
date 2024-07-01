@@ -21,26 +21,27 @@ def getOptions(args=sys.argv[1:]):
 
 def reportPost(web):
     optionDots = web.find_element(By.XPATH, '/html/body/div[8]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/div/div/div')
-    clickElement(optionDots)
+    clickElement(optionDots, web)
     reportOption = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div/button[1]')
-    clickElement(reportOption)
+    clickElement(reportOption, web)
     reportType = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[3]/button[2]/div')
-    clickElement(reportType)
+    clickElement(reportType, web)
     reportType2 = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/fieldset/div[1]/div/div/input')
-    clickElement(reportType2)
+    clickElement(reportType2, web)
     submitReport = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
-    clickElement(submitReport)
+    clickElement(submitReport, web)
     close = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div/div/div[4]/button')
-    clickElement(close)
+    clickElement(close, web)
     return None
 
 def nextPost(web):
     try:
         nextButton = web.find_element(By.XPATH, '/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/div[2]/button')
+        clickElement(nextButton, web)
+        return True
     except:
-        return None
-    clickElement(nextButton)
-    return None
+        return False
+    
 
 def clickElement(elem, web):
     ActionChains(web).click(elem).perform()
@@ -97,15 +98,17 @@ def main():
     for username in u_file:
         web.get(username)
         firstPost = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/div[2]/div/div[1]/div[1]')
-        clickElement(firstPost)
+        clickElement(firstPost, web)
         while True:
             print("Report post? (y) / n")
             report = input()
             if report == "n":
-                nextPost(web)
+                if not nextPost(web):
+                    break
             else:
                 reportPost(web)
-                nextPost(web)            
+                if not nextPost(web):
+                    break
 
 if '__main__':
     main()
