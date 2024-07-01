@@ -68,7 +68,7 @@ def main():
         print("ERROR: wrong syntax in usr.txt")
         exit(2)
 
-    web = webdriver.Chrome()
+    web = webdriver.Firefox()
     web.implicitly_wait(10)
 
     try:
