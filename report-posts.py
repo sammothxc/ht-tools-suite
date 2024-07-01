@@ -65,19 +65,18 @@ def main():
 
     for lines in u_file:
         u_file = lines.split(":")
-
         try:
-            un = a_file[0]
-            pw = a_file[1]
+            un = u_file[0]
+            pw = u_file[1]
         except IndexError:
-            print("ERROR: Wrong syntax in acc.txt")
+            print("ERROR: Wrong syntax in usr.txt")
         user.append(un)
         passw.append(pw)
 
     web = webdriver.Firefox()
     web.implicitly_wait(10)
 
-    for line in range(len(a_file)+1):
+    for line in range(len(u_file)+1):
         print("Logging in as " + user[line])
         try:
             web.get("https://www.instagram.com/accounts/login/")
