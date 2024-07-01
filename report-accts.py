@@ -19,6 +19,10 @@ def getOptions(args=sys.argv[1:]):
 
     return options
 
+def clickElement(elem):
+    ActionChains(web).click(elem).perform()
+    return None
+
 args = getOptions()
 
 usr_file = args.usernames
@@ -82,46 +86,25 @@ for line in range(len(a_file)+1):
         web.get(username)
 
         options = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/header/section[2]/div/div/div[3]/div')
-        
-        ActionChains(web)\
-            .click(options)\
-            .perform()
+        clickElement(options)
         
         report = web.find_element(By.XPATH, '/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div/button[3]')
-        
-        ActionChains(web)\
-            .click(report)\
-            .perform()
+        clickElement(report)
 
         report2 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[3]/button[2]/div')
-        
-        ActionChains(web)\
-            .click(report2)\
-            .perform()
+        clickElement(report2)
 
         report3 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[1]/div')
-
-        ActionChains(web)\
-            .click(report3)\
-            .perform()
+        clickElement(report3)
 
         report4 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[5]/div/div[1]')
-        
-        ActionChains(web)\
-            .click(report4)\
-            .perform()
+        clickElement(report4)
         
         report5 = web.find_element(By.XPATH, '//*[@id="IGDSRadioButtontag-3"]')
-        
-        ActionChains(web)\
-            .click(report5)\
-            .perform()
+        clickElement(report5)
         
         report6 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
-        
-        ActionChains(web)\
-            .click(report6)\
-            .perform()
+        clickElement(report6)
 
         pyautogui.keyDown('ctrl')
         time.sleep(0.25)
