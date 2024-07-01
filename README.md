@@ -23,9 +23,21 @@ py -m pip install webbot
 ```
 
 ## Files
-Create `acc.txt` and fill it with burner accounts and their respective passwords following the format in `acc-example.txt`
+Create `usr.txt` and fill it with burner accounts (at least 1 account) and their respective passwords following the format:
+```
+username1:password1
+username2:password2
+username3:password3
+...
+```
 
-Create `usr.txt` and fill it with the direct link to accounts you want to report following the format in `usr-example.txt`
+Create `acc.txt` and fill it with the direct link to accounts you want to report following the format:
+```
+https://www.instagram.com/username1/
+https://www.instagram.com/username2/
+https://www.instagram.com/username3/
+...
+```
 
 ## Usage
 To auto report all users listed in acc.txt, run `bin/python3 report-accts.py`
