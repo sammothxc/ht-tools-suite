@@ -15,6 +15,7 @@ def getOptions(args=sys.argv[1:]):
     return options
 
 def reportPost(web):
+    time.sleep(100)
     optionDots = web.find_element(By.XPATH, '/html/body/div[8]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/div/div/div')
     clickElement(optionDots, web)
     reportOption = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div/button[1]')
@@ -67,25 +68,31 @@ def main():
         print("ERROR: wrong syntax in usr.txt")
         exit(2)
 
-    web = webdriver.Firefox()
+    web = webdriver.Chrome()
     web.implicitly_wait(10)
 
     try:
         web.get("https://www.instagram.com/accounts/login/")
         assert "Instagram" in web.title
+        print("Successfully opened the web browser.")
     except:
         print("ERROR: Failed to open the web browser.")
         exit(2)
     
+    print("Entering username...")
     elem_user = web.find_element(By.NAME, "username")
     elem_user.send_keys(un)
+    print("Entering password...")
     elem_pass = web.find_element(By.NAME, "password")
     elem_pass.send_keys(pw)
+    print("Logging in...")
     time.sleep(0.3)
     elem_pass.send_keys(Keys.ENTER)
     time.sleep(4)
+    print("Logged in.")
     
     for accounts in a_file:
+        print("Reporting posts from: " + accounts)
         web.get(accounts)
         firstPost = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/div[2]/div/div[1]/div[1]')
         clickElement(firstPost, web)
