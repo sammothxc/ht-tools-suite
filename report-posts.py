@@ -45,6 +45,8 @@ def main():
     args = getOptions()
     usr_file = args.user
     acc_file = args.accounts
+    user = []
+    passw = []
 
     try:
         a = open(acc_file, "r").readlines()
@@ -54,59 +56,66 @@ def main():
         exit(2)
 
     try:
-        with open(usr_file, "r") as pass_file:
-            u_file = pass_file.read().split(":")
+        u = open(usr_file, "r").readlines()
+        u_file = [s.rstrip()for s in u]
+        u_file.reverse()
     except FileNotFoundError:
         print("ERROR: no usr.txt file found")
         exit(2)
 
-    try:
-        un = u_file[0]
-        pw = u_file[1]
-    except IndexError:
-        print("ERROR: wrong syntax in usr.txt")
-        exit(2)
+    for lines in u_file:
+        u_file = lines.split(":")
+
+        try:
+            un = a_file[0]
+            pw = a_file[1]
+        except IndexError:
+            print("ERROR: Wrong syntax in acc.txt")
+        user.append(un)
+        passw.append(pw)
 
     web = webdriver.Firefox()
     web.implicitly_wait(10)
 
-    try:
-        web.get("https://www.instagram.com/accounts/login/")
-        assert "Instagram" in web.title
-        print("Successfully opened the web browser.")
-    except:
-        print("ERROR: Failed to open the web browser.")
-        exit(2)
-    
-    time.sleep(0.25)
-    print("Entering username...")
-    elem_user = web.find_element(By.NAME, "username")
-    elem_user.send_keys(un)
-    time.sleep(0.25)
-    print("Entering password...")
-    elem_pass = web.find_element(By.NAME, "password")
-    elem_pass.send_keys(pw)
-    time.sleep(0.25)
-    print("Logging in...")
-    elem_pass.send_keys(Keys.ENTER)
-    time.sleep(4)
-    print("Logged in.")
-    
-    for accounts in a_file:
-        print("Reporting posts from: " + accounts)
-        web.get(accounts)
-        firstPost = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/div[2]/div/div[1]/div[1]')
-        clickElement(firstPost, web)
-        while True:
-            print("Report post? (y) / n")
-            report = input()
-            if report == "n":
-                if not nextPost(web):
-                    break
-            else:
-                reportPost(web)
-                if not nextPost(web):
-                    break
+    for line in range(len(a_file)+1):
+        print("Logging in as " + user[line])
+        try:
+            web.get("https://www.instagram.com/accounts/login/")
+            assert "Instagram" in web.title
+            print("Successfully opened the web browser.")
+        except:
+            print("ERROR: Failed to open the web browser.")
+            exit(2)
+        
+        time.sleep(0.25)
+        print("Entering username...")
+        elem_user = web.find_element(By.NAME, "username")
+        elem_user.send_keys(user[line])
+        time.sleep(0.25)
+        print("Entering password...")
+        elem_pass = web.find_element(By.NAME, "password")
+        elem_pass.send_keys(user[line])
+        time.sleep(0.25)
+        print("Logging in...")
+        elem_pass.send_keys(Keys.ENTER)
+        time.sleep(4)
+        print("Logged in.")
+        
+        for accounts in a_file:
+            print("Reporting posts from: " + accounts)
+            web.get(accounts)
+            firstPost = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/div[2]/div/div[1]/div[1]')
+            clickElement(firstPost, web)
+            while True:
+                print("Report post? (y) / n")
+                report = input()
+                if report == "n":
+                    if not nextPost(web):
+                        break
+                else:
+                    reportPost(web)
+                    if not nextPost(web):
+                        break
 
 if '__main__':
     main()
