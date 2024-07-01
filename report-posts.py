@@ -15,8 +15,7 @@ def getOptions(args=sys.argv[1:]):
     return options
 
 def reportPost(web):
-    time.sleep(100)
-    optionDots = web.find_element(By.XPATH, '/html/body/div[8]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/div/div/div')
+    optionDots = web.find_element(By.XPATH, '/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/div/div/div/div/div/svg')
     clickElement(optionDots, web)
     reportOption = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div/button[1]')
     clickElement(reportOption, web)
