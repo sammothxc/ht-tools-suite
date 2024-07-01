@@ -28,7 +28,8 @@ Create `acc.txt` and fill it with burner accounts and their respective passwords
 Create `usr.txt` and fill it with the direct link to accounts you want to report following the format in `usr-example.txt`
 
 ## Usage
-Run`bin/python3 report-bot.py`
+To auto report all users listed in acc.txt, run `bin/python3 report-accts.py`
+To auto report specific posts for users listed in ac.txt, run `bin/python3 report-posts.py`
 
 Linux users: If you get an error complaining about the display or priveledges, run `xhost +local:$USER`
 
