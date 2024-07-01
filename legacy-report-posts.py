@@ -19,7 +19,11 @@ def getOptions(args=sys.argv[1:]):
 
     return options
 
-def reportPost():
+########## Instagram Post XPATH Layout
+# /html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/div[2]/div/div[(ROW #)]/div[(COL 1-3)]
+def reportPost(row, col):
+    post = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/div[2]/div/div[{row}]/div[{col}]')
+    clickElement(post)
     optionDots = web.find_element(By.XPATH, '/html/body/div[8]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/div/div/div')
     clickElement(optionDots)
     reportOption = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div/button[1]')
@@ -32,14 +36,6 @@ def reportPost():
     clickElement(submitReport)
     close = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div/div/div[4]/button')
     clickElement(close)
-    return None
-
-def nextPost():
-    try:
-        nextButton = web.find_element(By.XPATH, '/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/div[2]/button')
-    except:
-        return None
-    clickElement(nextButton)
     return None
 
 def clickElement(elem):
@@ -111,14 +107,20 @@ for line in range(len(a_file)+1):
     row = 1
     col = 1
     while True:
-        print("Report post? (y) / n")
+        print("Post Position: ", row, col)
+        print("Report post? (y)es / (n)o / (d)one")
         report = input()
-        if report == "n":
-            nextPost()
+        if report == "y":
+            reportPost(row, col)
+        elif report == "n":
+            pass
+        elif report == "d":
+            break
+        if col < 3:
+            col += 1
         else:
-            reportPost()
-            nextPost()            
-
+            row += 1
+            col = 1
 
         pyautogui.keyDown('ctrl')
         time.sleep(0.25)
