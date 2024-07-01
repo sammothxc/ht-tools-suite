@@ -1,22 +1,17 @@
 import time
-import pyautogui
 import argparse
 import sys
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 def getOptions(args=sys.argv[1:]):
 
     parser = argparse.ArgumentParser(description="This bot helps users to mass report posts of objectionable material.")
-    parser.add_argument("-u", "--usernames", type = str, default = "usr.txt", help = "Usernames to report posts on ( Defaults to usr.txt in program directory ).")
-    parser.add_argument("-a", "--accounts", type = str, default = "acc.txt", help = "Accounts list ( Defaults to acc.txt in program directory ).")
-
+    parser.add_argument("-u", "--user", type = str, default = "usr.txt", help = "Instagram User(s) to report posts from (Defaults to usr.txt).")
+    parser.add_argument("-a", "--accounts", type = str, default = "acc.txt", help = "Accounts to report (Defaults to acc.txt).")
     options = parser.parse_args(args)
-
     return options
 
 def reportPost(web):
@@ -42,39 +37,34 @@ def nextPost(web):
     except:
         return False
     
-
 def clickElement(elem, web):
     ActionChains(web).click(elem).perform()
     return None
 
 def main():
     args = getOptions()
-
-    usr_file = args.usernames
+    usr_file = args.user
     acc_file = args.accounts
 
     try:
-        u = open(usr_file, "r").readlines()
-        u_file = [s.rstrip()for s in u]
+        a = open(acc_file, "r").readlines()
+        a_file = [s.rstrip()for s in a]
+    except FileNotFoundError:
+        print("ERROR: no acc.txt file found")
+        exit(2)
+
+    try:
+        with open(usr_file, "r") as pass_file:
+            u_file = pass_file.read().split(":")
     except FileNotFoundError:
         print("ERROR: no usr.txt file found")
         exit(2)
 
     try:
-        a = open(acc_file, "r").readlines()
-        a_file = [s.rstrip()for s in a]
-        a_file.reverse()
-    except FileNotFoundError:
-        print("ERROR: no acc.txt file found")
-        exit(2)
-
-    with open("pass.txt", "r") as pass_file:
-        a_file = pass_file.read().split(":")
-    try:
-        un = a_file[0]
-        pw = a_file[1]
+        un = u_file[0]
+        pw = u_file[1]
     except IndexError:
-        print("ERROR: Wrong syntax in acc.txt")
+        print("ERROR: wrong syntax in usr.txt")
         exit(2)
 
     web = webdriver.Firefox()
@@ -95,8 +85,8 @@ def main():
     elem_pass.send_keys(Keys.ENTER)
     time.sleep(4)
     
-    for username in u_file:
-        web.get(username)
+    for accounts in a_file:
+        web.get(accounts)
         firstPost = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/div[2]/div/div[1]/div[1]')
         clickElement(firstPost, web)
         while True:

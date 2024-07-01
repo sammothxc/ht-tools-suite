@@ -1,22 +1,17 @@
 import time
-import pyautogui
 import argparse
 import sys
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 def getOptions(args=sys.argv[1:]):
 
-    parser = argparse.ArgumentParser(description="This bot helps users to mass report accounts with clickbaits or objectionable material.")
-    parser.add_argument("-u", "--usernames", type = str, default = "usr.txt", help = "Usernames to report ( Defaults to usr.txt in program directory ).")
-    parser.add_argument("-a", "--accounts", type = str, default = "acc.txt", help = "Accounts list ( Defaults to acc.txt in program directory ).")
-
+    parser = argparse.ArgumentParser(description="This bot helps users to mass report accounts full of objectionable material.")
+    parser.add_argument("-u", "--user", type = str, default = "usr.txt", help = "Instagram User(s) to report posts from (Defaults to usr.txt).")
+    parser.add_argument("-a", "--accounts", type = str, default = "acc.txt", help = "Accounts to report (Defaults to acc.txt).")
     options = parser.parse_args(args)
-
     return options
 
 def clickElement(elem):
@@ -105,10 +100,3 @@ for line in range(len(a_file)+1):
         
         report6 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
         clickElement(report6)
-
-        pyautogui.keyDown('ctrl')
-        time.sleep(0.25)
-        pyautogui.keyDown('w')
-        time.sleep(0.5)
-        pyautogui.keyUp('ctrl')
-        pyautogui.keyUp('https://replit.com/@Cw')
