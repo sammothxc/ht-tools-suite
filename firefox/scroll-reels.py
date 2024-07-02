@@ -67,7 +67,7 @@ def main():
     while True:
         html = web.find_element(By.TAG_NAME, 'html')
         html.send_keys(Keys.PAGE_DOWN)
-        time.sleep(random.randrange(2, 10))
+        time.sleep(random.randrange(2, 8))
 
 if '__main__':
     main()
