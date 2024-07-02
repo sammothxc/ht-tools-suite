@@ -15,7 +15,7 @@ bin/pip3 install webbot
 
 Windows: 
 ```
-py -m venv ~/autoreport
+py -m venv ~/hitman-tools
 
 py -m pip install pyautogui
 

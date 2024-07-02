@@ -77,7 +77,7 @@ def main():
         passw.append(pw)
 
     ## Login to the accounts
-    web = webdriver.Firefox()
+    web = webdriver.Chrome()
     web.implicitly_wait(10)
 
     for line in range(len(u_file)+1):

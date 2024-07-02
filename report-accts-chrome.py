@@ -43,7 +43,7 @@ def main():
     user = []
     passw = []
 
-    web = webdriver.Firefox()
+    web = webdriver.Chrome()
     web.implicitly_wait(10)
 
     for lines in a_file:
