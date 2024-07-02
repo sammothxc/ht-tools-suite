@@ -45,6 +45,7 @@ To auto report all users listed in acc.txt, run `bin/python3 [your browser]/repo
 To auto report specific posts for users listed in ac.txt, run `bin/python3 [your browser]/report-posts.py`
 
 To auto scroll through Instagram reels to avoid bot detection, run `bin/python3 [your browser]/scroll-reels.py`
+Note: Once it navigates to the reels page, you may have to click to focus the window and scroll once to initiate the auto scrolling.
 
 Linux users: If you get an error complaining about the display or priveledges, run `xhost +local:$USER`
 
