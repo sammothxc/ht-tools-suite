@@ -6,7 +6,7 @@ Tested on Linux and Mac, theoretically works on Windows.
 ## Dependencies
 Linux and Mac:
 ```
-python3 -m venv ~/autoreport
+python3 -m venv ~/hitman-tools
 
 bin/pip3 install pyautogui
 
