@@ -65,8 +65,9 @@ def main():
     ## Scroll through reels
     SCROLL_PAUSE_TIME = 0.5
     while True:
-        web.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(random.randrange(1, 3))
+        html = web.find_element(By.TAG_NAME, 'html')
+        html.send_keys(Keys.PAGE_DOWN)
+        time.sleep(random.randrange(2, 10))
 
 if '__main__':
     main()
