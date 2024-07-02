@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 
+## Get options from command line
 def getOptions(args=sys.argv[1:]):
 
     parser = argparse.ArgumentParser(description="This bot helps users to mass report posts of objectionable material.")
@@ -14,6 +15,7 @@ def getOptions(args=sys.argv[1:]):
     options = parser.parse_args(args)
     return options
 
+## Report the post
 def reportPost(web):
     optionDots = web.find_element(By.XPATH, '/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/div/div/div/div')
     clickElement(optionDots, web)
@@ -29,6 +31,7 @@ def reportPost(web):
     clickElement(close, web)
     return None
 
+## Go to the next post
 def nextPost(web):
     try:
         nextButton = web.find_element(By.XPATH, '/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/div/button')
@@ -37,11 +40,13 @@ def nextPost(web):
     except:
         return False
     
+## Click the element
 def clickElement(elem, web):
     ActionChains(web).click(elem).perform()
     return None
 
 def main():
+    ## Load the usernames and accounts
     args = getOptions()
     usr_file = args.user
     acc_file = args.accounts
@@ -72,6 +77,7 @@ def main():
         user.append(un)
         passw.append(pw)
 
+    ## Login to the accounts
     web = webdriver.Firefox()
     web.implicitly_wait(10)
 
@@ -99,6 +105,7 @@ def main():
         time.sleep(4)
         print("Logged in.")
         
+        ## Cycle through the posts
         for accounts in a_file:
             print("Reporting posts from: " + accounts)
             web.get(accounts)
