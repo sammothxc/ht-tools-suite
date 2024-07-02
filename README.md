@@ -41,6 +41,7 @@ https://www.instagram.com/username3/
 
 ## Usage
 To auto report all users listed in acc.txt, run `bin/python3 report-accts.py`
+
 To auto report specific posts for users listed in ac.txt, run `bin/python3 report-posts.py`
 
 Linux users: If you get an error complaining about the display or priveledges, run `xhost +local:$USER`
