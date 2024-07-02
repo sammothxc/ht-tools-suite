@@ -1,7 +1,7 @@
 Tool for reporting explicit accounts on instagram under the 'Nudity or Sexual Activity' category.
 
 # Setup
-Tested on Linux and Mac, theoretically works on Windows but making python work is all up to you.
+Tested on Linux and Mac, theoretically works on Windows.
 
 ## Dependencies
 Linux and Mac:
@@ -41,6 +41,7 @@ https://www.instagram.com/username3/
 
 ## Usage
 To auto report all users listed in acc.txt, run `bin/python3 report-accts.py`
+
 To auto report specific posts for users listed in ac.txt, run `bin/python3 report-posts.py`
 
 Linux users: If you get an error complaining about the display or priveledges, run `xhost +local:$USER`
