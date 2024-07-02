@@ -1,7 +1,7 @@
 Tool for reporting explicit accounts on instagram under the 'Nudity or Sexual Activity' category.
 
 # Setup
-Tested on Linux and Mac, theoretically works on Windows but making python work is all up to you.
+Tested on Linux and Mac, theoretically works on Windows.
 
 ## Dependencies
 Linux and Mac:
