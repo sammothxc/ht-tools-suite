@@ -1,6 +1,7 @@
 import time
 import argparse
 import sys
+import random
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -66,7 +67,7 @@ def main():
     last_height = web.execute_script("return document.body.scrollHeight")
     while True:
         web.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(SCROLL_PAUSE_TIME)
+        time.sleep(random.randrange(0.5, 2))
         new_height = web.execute_script("return document.body.scrollHeight")
         if new_height == last_height:
             break
