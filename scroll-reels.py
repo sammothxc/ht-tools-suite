@@ -66,7 +66,7 @@ def main():
     SCROLL_PAUSE_TIME = 0.5
     while True:
         web.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(random.randrange(0.5, 2))
+        time.sleep(random.randrange(1, 3))
 
 if '__main__':
     main()
