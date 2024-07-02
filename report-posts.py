@@ -8,7 +8,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 ## Get options from command line
 def getOptions(args=sys.argv[1:]):
-
     parser = argparse.ArgumentParser(description="This bot helps users to mass report posts of objectionable material.")
     parser.add_argument("-u", "--user", type = str, default = "usr.txt", help = "Instagram User(s) to report posts from (Defaults to usr.txt).")
     parser.add_argument("-a", "--accounts", type = str, default = "acc.txt", help = "Accounts to report (Defaults to acc.txt).")

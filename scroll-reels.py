@@ -7,8 +7,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 
+## Get the options from the command line
 def getOptions(args=sys.argv[1:]):
-
     parser = argparse.ArgumentParser(description="This bot helps users avoid automation detection features of instagram by scrolling thru reels.")
     parser.add_argument("-u", "--user", type = str, default = "usr.txt", help = "Instagram User(s) to report posts from (Defaults to usr.txt).")
     options = parser.parse_args(args)

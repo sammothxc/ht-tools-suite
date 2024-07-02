@@ -8,7 +8,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 ## Get the options from the command line
 def getOptions(args=sys.argv[1:]):
-
     parser = argparse.ArgumentParser(description="This bot helps users to mass report accounts full of objectionable material.")
     parser.add_argument("-u", "--user", type = str, default = "usr.txt", help = "Instagram User(s) to report posts from (Defaults to usr.txt).")
     parser.add_argument("-a", "--accounts", type = str, default = "acc.txt", help = "Accounts to report (Defaults to acc.txt).")
@@ -23,7 +22,6 @@ def clickElement(elem, web):
 def main():
     ## Load the usernames and accounts
     args = getOptions()
-
     usr_file = args.usernames
     acc_file = args.accounts
 
@@ -76,16 +74,12 @@ def main():
         elem_pass.send_keys(passw[line])
         time.sleep(0.7)
         elem_pass.send_keys(Keys.ENTER)
-
         time.sleep(4)
         
         ## Report the accounts
         for username in u_file:
-            
-            web.implicitly_wait(10)
-
             web.get(username)
-
+            
             options = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/header/section[2]/div/div/div[3]/div')
             clickElement(options, web)
             
