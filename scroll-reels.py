@@ -64,14 +64,9 @@ def main():
 
     ## Scroll through reels
     SCROLL_PAUSE_TIME = 0.5
-    last_height = web.execute_script("return document.body.scrollHeight")
     while True:
         web.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(random.randrange(0.5, 2))
-        new_height = web.execute_script("return document.body.scrollHeight")
-        if new_height == last_height:
-            break
-        last_height = new_height
 
 if '__main__':
     main()
