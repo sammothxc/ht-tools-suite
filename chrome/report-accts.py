@@ -65,6 +65,14 @@ def main():
         except:
             print("ERROR: Failed to open the web browser.")
             break
+
+        # refuse cookies
+        try:
+            print("trying")
+            WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH,\
+                '/html/body/div[4]/div[1]/div/div[2]/div/div/div/div/div[2]/div/button[2]'))).click()
+        except:
+            pass
         
         elem_user = web.find_element(By.NAME, "username")
         elem_user.send_keys(user[line])
