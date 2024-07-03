@@ -10,13 +10,13 @@ Tools for Hitmen to make our jobs more efficient and easier.
 
 |          |report-accts|report-posts|scroll-reels|
 | -------- |   :-----:  |  :------:  |   :-----:  |
-| Chrome   |     ✅     |      ❌    |     ✅     |
-| Firefox  |      ⚠️     |      ❌    |     ⚠️      |
-| Safari   |     ✅     |      ❌    |     ✅     |
-| Edge     |     ✅     |      ❌    |     ✅     |
+| Chrome   |     ⚠️      |      ❌    |     ✅     |
+| Firefox  |     ⚠️      |      ❌    |     ⚠️      |
+| Safari   |     ⚠️      |      ❌    |     ✅     |
+| Edge     |     ⚠️      |      ❌    |     ✅     |
 
 ### TODO
-- [ ] Fix 
+- [ ] Fix report-accts.py error when an account is already blocked in the list
 - [ ] Fix post element locations in report-posts.py
 - [ ] Add CP option to report-posts.py
 - [ ] GUI for easier use
