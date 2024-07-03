@@ -59,11 +59,11 @@ def main():
         print("ERROR: no usr.txt file found")
         exit(2)
 
-    for lines in a_file:
-        a_file = lines.split(":")
+    for lines in u_file:
+        u_file = lines.split(":")
         try:
-            un = a_file[0]
-            pw = a_file[1]
+            un = u_file[0]
+            pw = u_file[1]
         except IndexError:
             print("ERROR: Wrong syntax in acc.txt")
         user.append(un)
@@ -98,11 +98,11 @@ def main():
         elem_pass.send_keys(passw[line])
         time.sleep(0.7)
         elem_pass.send_keys(Keys.ENTER)
-        time.sleep(4)
+        time.sleep(5)
         
         ## Report the accounts
-        for username in u_file:
-            web.get(username)
+        for accounts in a_file:
+            web.get(accounts)
             
             options = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/header/section[2]/div/div/div[3]/div')
             clickElement(options, web)
@@ -124,6 +124,7 @@ def main():
             
             report6 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
             clickElement(report6, web)
+            time.sleep(1)
 
 if '__main__':
     main()

@@ -2,9 +2,15 @@ Tools for Hitmen to make our jobs more efficient and easier.
 
 # Setup
 ## Development Status
+✅ = Works as intended
+
+⚠️ = Works with minor issues
+
+❌ = Does not work
+
 |          |report-accts|report-posts|scroll-reels|
 | -------- |   :-----:  |  :------:  |   :-----:  |
-| Chrome   |      ⚠️     |      ❌    |     ✅     |
+| Chrome   |     ✅     |      ❌    |     ✅     |
 | Firefox  |      ⚠️     |      ❌    |     ⚠️      |
 | Safari   |     ✅     |      ❌    |     ✅     |
 | Edge     |      ⚠️     |      ❌    |     ✅     |
