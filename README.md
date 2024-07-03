@@ -1,4 +1,4 @@
-Tool for Hitmen to report Instagram accounts and posts.
+Tools for Hitmen to make our jobs more efficient and easier.
 
 # Setup
 ## Development Status
