@@ -1,7 +1,7 @@
 Tool for Hitmen to report Instagram accounts and posts.
 
 # Setup
-Tested on Chrome and Firefox, theoretically works on Edge and Safari.
+Tested on Chrome, Firefox, Safari, and Edge.
 
 ## Dependencies
 Linux and Mac:
