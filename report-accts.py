@@ -40,7 +40,7 @@ def clickElement(elem, web):
 def main():
     ## Load the usernames and accounts
     args = getOptions()
-    usr_file = args.usernames
+    usr_file = args.user
     acc_file = args.accounts
 
     try:

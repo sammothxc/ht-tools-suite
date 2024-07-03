@@ -52,7 +52,7 @@ def main():
         exit(2)
 
     ## Open web browser
-    web = webdriver.Chrome()
+    web = chooseBrowser()
     web.implicitly_wait(10)
 
     try:
