@@ -16,6 +16,22 @@ def getOptions(args=sys.argv[1:]):
     options = parser.parse_args(args)
     return options
 
+## Choose the browser
+def chooseBrowser():
+    print("(c)hrome (f)irefox (s)afari (e)dge")
+    report = input()
+    if report == "c":
+        return webdriver.Chrome()
+    elif report == "f":
+        return webdriver.Firefox()
+    elif report == "s":
+        return webdriver.Safari()
+    elif report == "e":
+        return webdriver.Edge()
+    else:
+        print("Invalid browser choice. Defaulting to Chrome.")
+        return webdriver.Chrome()
+
 def main():
     ## Get user credentials
     args = getOptions()
