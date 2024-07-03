@@ -1,7 +1,13 @@
 Tool for Hitmen to report Instagram accounts and posts.
 
 # Setup
-Tested on Chrome, Firefox, Safari, and Edge.
+## Development Status
+|          |report-accts|report-posts|scroll-reels|
+| -------- |   :-----:  |  :------:  |   :-----:  |
+| Chrome   |      ⚠️     |      ❌    |     ✅     |
+| Firefox  |      ⚠️     |      ❌    |     ⚠️      |
+| Safari   |     ✅     |      ❌    |     ✅     |
+| Edge     |      ⚠️     |      ❌    |     ✅     |
 
 ## Dependencies
 Linux and Mac:

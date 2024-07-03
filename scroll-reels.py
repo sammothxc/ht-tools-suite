@@ -55,6 +55,7 @@ def main():
     web = chooseBrowser()
     web.implicitly_wait(10)
 
+    print("Logging in as " + un)
     try:
         web.get("https://www.instagram.com/accounts/login/")
         assert "Instagram" in web.title
@@ -65,13 +66,12 @@ def main():
 
     ## Refuse cookies
     try:
-        print("trying")
+        print("Refusing Cookies...")
         WebDriverWait(web, 5).until(EC.element_to_be_clickable((By.XPATH,\
             '/html/body/div[4]/div[1]/div/div[2]/div/div/div/div/div[2]/div/button[2]'))).click()
     except:
         pass
 
-    
     ## Login
     print("Entering username...")
     elem_user = web.find_element(By.NAME, "username")
@@ -94,7 +94,7 @@ def main():
     while True:
         html = web.find_element(By.TAG_NAME, 'html')
         html.send_keys(Keys.PAGE_DOWN)
-        time.sleep(random.randrange(2, 8))
+        time.sleep(random.randrange(2, 15))
 
 if '__main__':
     main()

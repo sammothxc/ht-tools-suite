@@ -42,6 +42,15 @@ def main():
     args = getOptions()
     usr_file = args.user
     acc_file = args.accounts
+    user = []
+    passw = []
+
+    try:
+        a = open(acc_file, "r").readlines()
+        a_file = [s.rstrip()for s in a]
+    except FileNotFoundError:
+        print("ERROR: no acc.txt file found")
+        exit(2)
 
     try:
         u = open(usr_file, "r").readlines()
@@ -50,23 +59,8 @@ def main():
         print("ERROR: no usr.txt file found")
         exit(2)
 
-    try:
-        a = open(acc_file, "r").readlines()
-        a_file = [s.rstrip()for s in a]
-        a_file.reverse()
-    except FileNotFoundError:
-        print("ERROR: no acc.txt file found")
-        exit(2)
-
-    user = []
-    passw = []
-
-    web = chooseBrowser()
-    web.implicitly_wait(10)
-
     for lines in a_file:
         a_file = lines.split(":")
-
         try:
             un = a_file[0]
             pw = a_file[1]
@@ -76,7 +70,11 @@ def main():
         passw.append(pw)
 
     ## Login to the accounts
-    for line in range(len(a_file)+1):
+    web = chooseBrowser()
+    web.implicitly_wait(10)
+
+    for line in range(len(u_file)+1):
+        print("Logging in as " + user[line])
         try:
             web.get("https://www.instagram.com/accounts/login/")
             assert "Instagram" in web.title
@@ -86,7 +84,7 @@ def main():
 
         ## Refuse cookies
         try:
-            print("trying")
+            print("Refusing Cookies...")
             WebDriverWait(web, 5).until(EC.element_to_be_clickable((By.XPATH,\
                 '/html/body/div[4]/div[1]/div/div[2]/div/div/div/div/div[2]/div/button[2]'))).click()
         except:
