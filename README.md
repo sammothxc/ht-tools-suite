@@ -13,7 +13,7 @@ Tools for Hitmen to make our jobs more efficient and easier.
 | Chrome   |     ✅     |      ❌    |     ✅     |
 | Firefox  |      ⚠️     |      ❌    |     ⚠️      |
 | Safari   |     ✅     |      ❌    |     ✅     |
-| Edge     |      ⚠️     |      ❌    |     ✅     |
+| Edge     |     ✅     |      ❌    |     ✅     |
 
 ## Dependencies
 Linux and Mac:
