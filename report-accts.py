@@ -104,27 +104,31 @@ def main():
         for accounts in a_file:
             web.get(accounts)
             
-            options = web.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/header/section[2]/div/div/div[3]/div')
-            clickElement(options, web)
-            
-            report = web.find_element(By.XPATH, '/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div/button[3]')
-            clickElement(report, web)
+            try:
+                WebDriverWait(web, 5).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/section/main/div/header/section[2]/div/div/div[3]/div'))).click()
+                
+                report = web.find_element(By.XPATH, '/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div/button[3]')
+                clickElement(report, web)
 
-            report2 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[3]/button[2]/div')
-            clickElement(report2, web)
+                report2 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[3]/button[2]/div')
+                clickElement(report2, web)
 
-            report3 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[1]/div')
-            clickElement(report3, web)
+                report3 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[1]/div')
+                clickElement(report3, web)
 
-            report4 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[5]/div/div[1]')
-            clickElement(report4, web)
-            
-            report5 = web.find_element(By.XPATH, '//*[@id="IGDSRadioButtontag-3"]')
-            clickElement(report5, web)
-            
-            report6 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
-            clickElement(report6, web)
-            time.sleep(1)
+                report4 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/button[5]/div/div[1]')
+                clickElement(report4, web)
+                
+                report5 = web.find_element(By.XPATH, '//*[@id="IGDSRadioButtontag-3"]')
+                clickElement(report5, web)
+                
+                report6 = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
+                clickElement(report6, web)
+                time.sleep(1)
+
+            except:
+                print("ERROR: Failed to open the account.")
+                break
 
 if '__main__':
     main()
