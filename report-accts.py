@@ -128,7 +128,7 @@ def main():
 
             except:
                 print("ERROR: Failed to open the account.")
-                break
+                pass
 
 if '__main__':
     main()
