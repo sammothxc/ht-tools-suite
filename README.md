@@ -23,9 +23,11 @@ Tools for Hitmen to make our jobs more efficient and easier.
 
 
 ## Dependencies
+CLone the repository and run the following commands to install the necessary dependencies.
+
 Linux and Mac:
 ```
-python3 -m venv ~/hitman-tools
+python3 -m venv venv
 
 source venv/bin/activate
 
@@ -36,7 +38,9 @@ pip3 install webbot
 
 Windows: 
 ```
-py -m venv ~/hitman-tools
+py -m venv venv
+
+venv\Scripts\activate
 
 py -m pip install pyautogui
 
