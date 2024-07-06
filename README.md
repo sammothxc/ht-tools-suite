@@ -27,9 +27,11 @@ Linux and Mac:
 ```
 python3 -m venv ~/hitman-tools
 
-bin/pip3 install pyautogui
+source venv/bin/activate
 
-bin/pip3 install webbot
+pip3 install pyautogui
+
+pip3 install webbot
 ```
 
 Windows: 
@@ -59,11 +61,11 @@ https://www.instagram.com/username3/
 ```
 
 ## Usage
-To auto report all users listed in acc.txt, run `bin/python3 report-accts.py`
+To auto report all users listed in acc.txt, run `python3 report-accts.py`
 
-To auto report specific posts for users listed in ac.txt, run `bin/python3 report-posts.py`
+To auto report specific posts for users listed in ac.txt, run `python3 report-posts.py`
 
-To auto scroll through Instagram reels to avoid bot detection, run `bin/python3 scroll-reels.py` WHILE YOU ARE AFK.
+To auto scroll through Instagram reels to avoid bot detection, run `python3 scroll-reels.py` WHILE YOU ARE AFK.
 Note: Once it navigates to the reels page, you may have to click to focus the window and scroll once to initiate the auto scrolling.
 
 Linux users: If you get an error complaining about the display or priveledges, run `xhost +local:$USER`
