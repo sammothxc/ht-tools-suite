@@ -4,16 +4,35 @@ import sys
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
+## Get options from command line
 def getOptions(args=sys.argv[1:]):
-
     parser = argparse.ArgumentParser(description="This bot helps users to mass report posts of objectionable material.")
     parser.add_argument("-u", "--user", type = str, default = "usr.txt", help = "Instagram User(s) to report posts from (Defaults to usr.txt).")
     parser.add_argument("-a", "--accounts", type = str, default = "acc.txt", help = "Accounts to report (Defaults to acc.txt).")
     options = parser.parse_args(args)
     return options
 
+## Choose the browser
+def chooseBrowser():
+    print("(c)hrome (f)irefox (s)afari (e)dge")
+    report = input()
+    if report == "c":
+        return webdriver.Chrome()
+    elif report == "f":
+        return webdriver.Firefox()
+    elif report == "s":
+        return webdriver.Safari()
+    elif report == "e":
+        return webdriver.Edge()
+    else:
+        print("Invalid browser choice. Defaulting to Chrome.")
+        return webdriver.Chrome()
+
+## Report the post
 def reportPost(web):
     optionDots = web.find_element(By.XPATH, '/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/div/div/div/div')
     clickElement(optionDots, web)
@@ -29,6 +48,7 @@ def reportPost(web):
     clickElement(close, web)
     return None
 
+## Go to the next post
 def nextPost(web):
     try:
         nextButton = web.find_element(By.XPATH, '/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/div/button')
@@ -37,11 +57,13 @@ def nextPost(web):
     except:
         return False
     
+## Click the element
 def clickElement(elem, web):
     ActionChains(web).click(elem).perform()
     return None
 
 def main():
+    ## Load the usernames and accounts
     args = getOptions()
     usr_file = args.user
     acc_file = args.accounts
@@ -72,7 +94,8 @@ def main():
         user.append(un)
         passw.append(pw)
 
-    web = webdriver.Firefox()
+    ## Login to the accounts
+    web = chooseBrowser()
     web.implicitly_wait(10)
 
     for line in range(len(u_file)+1):
@@ -84,6 +107,15 @@ def main():
         except:
             print("ERROR: Failed to open the web browser.")
             exit(2)
+        
+        ## Refuse cookies
+        try:
+            print("trying")
+            WebDriverWait(web, 5).until(EC.element_to_be_clickable((By.XPATH,\
+                '/html/body/div[4]/div[1]/div/div[2]/div/div/div/div/div[2]/div/button[2]'))).click()
+        except:
+            pass
+
         
         time.sleep(0.25)
         print("Entering username...")
@@ -99,6 +131,7 @@ def main():
         time.sleep(4)
         print("Logged in.")
         
+        ## Cycle through the posts
         for accounts in a_file:
             print("Reporting posts from: " + accounts)
             web.get(accounts)

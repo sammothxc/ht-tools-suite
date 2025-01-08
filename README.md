@@ -1,21 +1,46 @@
-Tool for reporting explicit accounts on instagram under the 'Nudity or Sexual Activity' category.
+Tools for Hitmen to make our jobs more efficient and easier.
 
 # Setup
-Tested on Linux and Mac, theoretically works on Windows but making python work is all up to you.
+## Development Status
+✅ = Works as intended
+
+⚠️ = Works with minor issues
+
+❌ = Does not work
+
+|          |report-accts|report-posts|scroll-reels|
+| -------- |   :-----:  |  :------:  |   :-----:  |
+| Chrome   |     ⚠️      |      ❌    |     ✅     |
+| Firefox  |     ⚠️      |      ❌    |     ⚠️      |
+| Safari   |     ⚠️      |      ❌    |     ✅     |
+| Edge     |     ⚠️      |      ❌    |     ✅     |
+
+### TODO
+- [ ] Fix post element locations in report-posts.py
+- [ ] Add CP option to report-posts.py
+- [ ] GUI for easier use
+- [ ] Build exeutables for Windows/Mac/Linux platforms
+
 
 ## Dependencies
+CLone the repository and run the following commands to install the necessary dependencies.
+
 Linux and Mac:
 ```
-python3 -m venv ~/autoreport
+python3 -m venv venv
 
-bin/pip3 install pyautogui
+source venv/bin/activate
 
-bin/pip3 install webbot
+pip3 install pyautogui
+
+pip3 install webbot
 ```
 
 Windows: 
 ```
-py -m venv ~/autoreport
+py -m venv venv
+
+venv\Scripts\activate
 
 py -m pip install pyautogui
 
@@ -40,8 +65,12 @@ https://www.instagram.com/username3/
 ```
 
 ## Usage
-To auto report all users listed in acc.txt, run `bin/python3 report-accts.py`
-To auto report specific posts for users listed in ac.txt, run `bin/python3 report-posts.py`
+To auto report all users listed in acc.txt, run `python3 report-accts.py`
+
+To auto report specific posts for users listed in ac.txt, run `python3 report-posts.py`
+
+To auto scroll through Instagram reels to avoid bot detection, run `python3 scroll-reels.py` WHILE YOU ARE AFK.
+Note: Once it navigates to the reels page, you may have to click to focus the window and scroll once to initiate the auto scrolling.
 
 Linux users: If you get an error complaining about the display or priveledges, run `xhost +local:$USER`
 
