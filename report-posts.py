@@ -25,7 +25,7 @@ def reportPost(web):
     clickElement(reportType2, web)
     submitReport = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[6]/button')
     clickElement(submitReport, web)
-    close = web.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div/div/div[4]/button')
+    close = web.find_element(By.XPATH, '/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div/div/div[4]/button')
     clickElement(close, web)
     return None
 
